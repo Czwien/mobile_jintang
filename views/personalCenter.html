@@ -50,6 +50,7 @@
 					</div>
 				</div>
 			</div>
+			
 		</div>
 		
 		<nav class="mui-bar mui-bar-tab button-nav">
@@ -71,13 +72,22 @@
 		<script src="../js/jquery.js"></script>
 		<script src="../js/public.js"></script>
 		<script type="text/javascript">
-			mui.init()
+			mui.init();
+			let myPui = new pui();
 			
 			$(function(){
 				$(".menu").on("click",function() {
 					let page = $(this).attr("class").replace("menu ","");
-					window.location.href = baseUrl + "views/personal/" + page + ".html";
+					if (page != "loginOut") {
+						window.location.href = baseUrl + "views/personal/" + page + ".html";
+					} else {
+						myPui.confirm("提示","退出?","取消","确认",null);
+						/* mui.confirm("您确认要退出登录吗?","提示",["取消","确认"],function(){
+							
+						},"div"); */
+					}
 				});
+				
 			});
 			
 			function toIndex() {
