@@ -1,0 +1,153 @@
+<!Doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.css" rel="stylesheet" />
+		<link href="../../css/public.css" rel="stylesheet"/>
+		<link href="../../css/manage/assetsManage.css" rel="stylesheet"/>
+	</head>
+
+	<body>
+		
+		<header class="mui-bar mui-bar-nav title-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">资产管理</h1>
+		</header>
+		
+		<div class="mui-content">
+			<ul class="mui-table-view">
+			    <li class="mui-table-view-cell house">
+			        <a class="mui-navigate-right manageMenuList">
+						<img src="../../image/assetsManange/house.png" />
+						<span>房屋查询</span>
+					</a>
+			    </li>
+			    <li class="mui-table-view-cell soil">
+			        <a class="mui-navigate-right manageMenuList">
+						<img src="../../image/assetsManange/soil.png" />
+						<span>土地查询</span>
+					</a>
+			    </li>
+			    <li class="mui-table-view-cell structure">
+			        <a class="mui-navigate-right manageMenuList">
+			    		<img src="../../image/assetsManange/structures.png" />
+			    		<span>构筑物查询</span>
+			    	</a>
+			    </li>
+				<li class="mui-table-view-cell otherAssets">
+				    <a class="mui-navigate-right manageMenuList">
+						<img src="../../image/assetsManange/otherAssets.png" />
+						<span>其他资产查询</span>
+					</a>
+				</li>
+				<li class="mui-table-view-cell constructionPprocess">
+				    <a class="mui-navigate-right manageMenuList">
+						<img src="../../image/assetsManange/constructionPprocess.png" />
+						<span>在建工程查询</span>
+					</a>
+				</li>
+				<li class="mui-table-view-cell librarian">
+				    <a class="mui-navigate-right manageMenuList">
+						<img src="../../image/assetsManange/librarian.png" />
+						<span>图书档案查询</span>
+					</a>
+				</li>
+				<li class="mui-table-view-cell flexibleunit">
+				    <a class="mui-navigate-right manageMenuList">
+						<img src="../../image/assetsManange/flexibleunit.png" />
+						<span>通用设备查询</span>
+					</a>
+				</li>
+				<li class="mui-table-view-cell generalTransportationFacilities">
+				    <a class="mui-navigate-right manageMenuList">
+						<img src="../../image/assetsManange/generalTransportationFacilities.png" />
+						<span>通用交通运输设备查询</span>
+					</a>
+				</li>
+				<li class="mui-table-view-cell dedicatedDevice">
+				    <a class="mui-navigate-right manageMenuList">
+						<img src="../../image/assetsManange/dedicatedDevice.png" />
+						<span>专用设备查询</span>
+					</a>
+				</li>
+				<li class="mui-table-view-cell dedicatedTransportationFacilities">
+				    <a class="mui-navigate-right manageMenuList">
+						<img src="../../image/assetsManange/dedicatedTransportationFacilities.png" />
+						<span>专用交通运输设备查询</span>
+					</a>
+				</li>
+				<li class="mui-table-view-cell culturalRelic">
+				    <a class="mui-navigate-right manageMenuList">
+						<img src="../../image/assetsManange/culturalRelic.png" />
+						<span>文物及陈列品查询</span>
+					</a>
+				</li>
+				<li class="mui-table-view-cell furniture">
+				    <a class="mui-navigate-right manageMenuList">
+						<img src="../../image/assetsManange/furniture.png" />
+						<span>家具、用具、装具及动植物查询</span>
+					</a>
+				</li>
+				<li class="mui-table-view-cell intangible">
+				    <a class="mui-navigate-right manageMenuList">
+						<img src="../../image/assetsManange/intangible.png" />
+						<span>无形资产查询</span>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mapBrowsing">
+				    <a class="mui-navigate-right manageMenuList">
+						<img src="../../image/assetsManange/mapBrowsing.png" />
+						<span>资产地图浏览</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		
+		<nav class="mui-bar mui-bar-tab button-nav">
+			<a class="mui-tab-item mui-active" onclick="toIndex()">
+				<span>
+					<img src="../../image/public/home-checked.png"/>
+				</span>
+				<span>首页</span>
+			</a>
+			<a class="mui-tab-item" onclick="toPersonCenter()">
+				<span>
+					<img src="../../image/public/personal-center.png"/>
+				</span>
+				<span>个人中心</span>
+			</a>
+		</nav>
+		
+		<script src="../../js/mui.js"></script>
+		<script src="../../js/jquery.js"></script>
+		<script src="../../js/public.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			
+			$(function(){
+				$("li").on("click",function(){
+					let classes = this.className;
+					classes = classes.replace("mui-table-view-cell ","");
+					toNextPage(classes);
+				});
+			})
+			
+			function toNextPage(page) {
+				window.location.href = baseUrl + "views/assetsManage/" + page + ".html"
+			}
+			
+			function toIndex() {
+				window.location.href = baseUrl + "views/index.html";
+			}
+			
+			function toPersonCenter() {
+				window.location.href = baseUrl + "views/personalCenter.html";
+			}
+			
+		</script>
+	</body>
+
+</html>

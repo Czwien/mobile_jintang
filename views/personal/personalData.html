@@ -1,0 +1,86 @@
+<!Doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.css" rel="stylesheet"/>
+		<link href="../../css/public.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		
+		<header class="mui-bar mui-bar-nav title-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">个人资料</h1>
+			<button class="mui-btn mui-btn-blue mui-btn-link mui-pull-right" onclick="saveData()">保存</button>
+		</header>
+		
+		<div class="mui-content">
+			<form class="form-content">
+			    <div class="input-row-new">
+					<label>账户名</label>
+					<input type="text" name="fullName" class="input-box" placeholder="请输入账户名"/>
+				</div>
+				<div class="input-row-new">
+					<label>性别</label>
+					<input type="text" name="gender" class="select-box" placeholder="请选择性别"/>
+				</div>
+				<div class="input-row-new">
+					<label>邮箱</label>
+					<input type="text" name="email" class="input-box" placeholder="请输入您的邮箱"/>
+				</div>
+				<div class="input-row-new">
+					<label>短号1</label>
+					<input type="text" name="shortNumber" class="input-box" placeholder="请输入您的短号1"/>
+				</div>
+				<div class="input-row-new">
+					<label>短号2</label>
+					<input type="text" name="shortNumber2" class="input-box" placeholder="请输入您的短号2"/>
+				</div>
+				<div class="input-row-new">
+					<label>联系手机1</label>
+					<input type="text" name="mobilephone" class="input-box" placeholder="请输入您的联系手机1"/>
+				</div>
+				<div class="input-row-new">
+					<label>联系手机2</label>
+					<input type="text" name="mobilephone2" class="input-box" placeholder="请输入您的联系手机2"/>
+				</div>
+				<div class="input-row-new">
+					<label>联系座机</label>
+					<input type="text" name="phone" class="input-box" placeholder="请输入您的联系座机"/>
+				</div>
+				<div class="input-row-new">
+					<label>微信号码</label>
+					<input type="text" name="wx" class="input-box" placeholder="请输入您的微信号码"/>
+				</div>
+				<div class="input-row-new">
+					<label>身份证号码</label>
+					<input type="text" name="cardID" class="input-box" placeholder="请输入您的身份证号码"/>
+				</div>
+				<div class="input-row-new">
+					<label>联系地址</label>
+					<input type="text" name="address" class="input-box" placeholder="请输入您的联系地址"/>
+				</div>
+				<div class="input-row-new">
+					<label>签名</label>
+					<input type="text" name="autograph" class="input-box" placeholder="请输入您的签名"/>
+				</div>
+			</form>
+		</div>
+		
+		
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery.js"></script>
+		<script src="../../js/public.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			
+			function saveData() {
+				alert(12);
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,84 @@
+.top-title {
+	width: 100%;
+	height: 38%;
+	position: relative;
+}
+
+.top-title>img {
+	width: 100%;
+	height: 100%;
+}
+
+.head-portrait {
+	width: 30%;
+	min-width: 120px;
+	height: 33%;
+	min-height: 115px;
+	position: absolute;
+	left: 50%;
+	top: 30%;
+	transform: translate(-50%,-30%);
+	-ms-transform: translate(-50%,-30%);
+	border-radius: 50%;
+	padding: 2px;
+}
+
+.head-portrait img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+
+.role-name {
+	position: absolute;
+	left: 50%;
+	top: 70%;
+	transform: translate(-50%,-30%);
+	-ms-transform: translate(-50%,-20%);
+	padding: 3px 30px;
+	background-color: #FFFFFF;
+	border-radius: 6px;
+	color: #0278fb;
+	font-size: 15px;
+}
+
+.conent {
+	width: 100%;
+	height: 46%;
+	margin-top: 5px;
+	background-color: #FFFFFF;
+}
+
+.firestMenuList,.secondMenuList {
+	width: 100%;
+	height: 50%;
+	box-sizing: border-box;
+}
+
+.firestMenuList {
+	border-bottom: 1px solid #b3b3b3;
+}
+
+.menu {
+	width: 49%;
+	height: 100%;
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.menu img {
+	width: 30px;
+	height: 32px;
+	margin-top: 28%;
+}
+
+.menu span {
+	margin-top: 15px;
+	font-size: 16px;
+	color: #999999;
+}
+
+.personalData,.messageCenter {
+	border-right: 1px solid #b3b3b3;
+}

@@ -1,0 +1,19 @@
+ul {
+	margin-top: 5px!important;
+}
+
+.manageMenuList img {
+	width: 18px;
+	height: 16px;
+	display: inline-block;
+	margin-left: 15px;
+	position: absolute;
+	top: 13px;
+}
+
+.manageMenuList span {
+	display: inline-block;
+	margin-left: 50px;
+	color: #666666;
+	font-size: 14px;
+}

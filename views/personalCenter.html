@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link href="../css/public.css" rel="stylesheet"/>
+		<link href="../css/personalCenter.css" rel="stylesheet"/>
+	</head>
+
+	<body>
+		
+		<header class="mui-bar mui-bar-nav title-nav">
+			<h1 class="mui-title">个人中心</h1>
+		</header>
+		
+		<div class="mui-content">
+			
+			<div class="top-title">
+				<img src="../image/personalCenter/personalBackground.png"/>
+				<div class="head-portrait">
+					<img src="../image/personalCenter/timg.png">
+				</div>
+				<div class="role-name">
+					管理员
+				</div>
+			</div>
+			
+			<div class="conent">
+				<div class="firestMenuList ">
+					<div class="menu personalData">
+						<img src="../image/personalCenter/personal-data.png"/>
+						<span>个人资料<span>
+					</div>
+					<div class="menu pinSecurity">
+						<img src="../image/personalCenter/pinSecurity.png"/>
+						<span>密码安全<span>
+					</div>
+				</div>
+				<div class="secondMenuList">
+					<div class="menu messageCenter">
+						<img src="../image/personalCenter/messageCenter.png"/>
+						<span>消息中心<span>
+					</div>
+					<div class="menu loginOut">
+						<img src="../image/personalCenter/loginOut.png"/>
+						<span>退出登录<span>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<nav class="mui-bar mui-bar-tab button-nav">
+			<a class="mui-tab-item" onclick="toIndex()">
+				<span>
+					<img src="../image/public/home.png"/>
+				</span>
+				<span>首页</span>
+			</a>
+			<a class="mui-tab-item mui-active">
+				<span>
+					<img src="../image/public/personal-center-checked.png"/>
+				</span>
+				<span>个人中心</span>
+			</a>
+		</nav>
+		
+		<script src="../js/mui.js"></script>
+		<script src="../js/jquery.js"></script>
+		<script src="../js/public.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			
+			$(function(){
+				$(".menu").on("click",function() {
+					let page = $(this).attr("class").replace("menu ","");
+					window.location.href = baseUrl + "views/personal/" + page + ".html";
+				});
+			});
+			
+			function toIndex() {
+				window.location.href = baseUrl + "views/index.html";
+			}
+			
+		</script>
+	</body>
+
+</html>

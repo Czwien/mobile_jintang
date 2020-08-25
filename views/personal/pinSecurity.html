@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="../../css/mui.css" rel="stylesheet"/>
+		<link href="../../css/public.css" rel="stylesheet" />
+	</head>
+	<body>
+		
+		<header class="mui-bar mui-bar-nav title-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">密码安全</h1>
+			<button class="mui-btn mui-btn-blue mui-btn-link mui-pull-right" onclick="saveData()">保存</button>
+		</header>
+		
+		<div class="mui-content">
+			<form class="form-content">
+			    <div class="input-row-new">
+					<label>原密码</label>
+					<input type="text" name="oldPwd" class="input-box" placeholder="请输入原密码"/>
+				</div>
+				<div class="input-row-new">
+					<label>新密码</label>
+					<input type="text" name="password" class="input-box" placeholder="请输入新密码"/>
+				</div>
+				<div class="input-row-new">
+					<label>确认密码</label>
+					<input type="text" name="againPwd" class="input-box" placeholder="请再次输入新密码"/>
+				</div>
+			</form>
+		</div>
+		
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery.js"></script>
+		<script src="../../js/public.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			
+			function saveData() {
+				alert(12);
+			}
+		</script>
+	</body>
+</html>

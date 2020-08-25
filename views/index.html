@@ -1,0 +1,123 @@
+<!Doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>资产管理系统</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link href="../css/public.css" rel="stylesheet"/>
+		<link href="../css/index.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		
+		<header class="mui-bar mui-bar-nav title-nav">
+			<h1 class="mui-title">资产管理系统</h1>
+		</header>
+		
+		<div class="mui-content">
+			
+			<div class="topImg">
+				<img src="../image/index/topImg.png"/>
+			</div>
+			<div class="content">
+				<div class="menuList assetsManage">
+					<div class="menuImg">
+						<img src="../image/index/assetsManage.png" />
+					</div>
+					<div class="menuText">
+						<span class="first">资产管理</span>
+						<span class="second">帮助企业实现对资产的信息化管理</span>
+					</div>
+					<img class="third" src="../image/public/next.png" />
+				</div>
+				<div class="menuList contractManage">
+					<div class="menuImg">
+						<img src="../image/index/contractManage.png" />
+					</div>
+					<div class="menuText">
+						<span class="first">合同管理</span>
+						<span class="second">为企业提供及时有效的合同管理</span>
+					</div>
+					<img class="third" src="../image/public/next.png" />
+				</div>
+				<div class="menuList securityCheck">
+					<div class="menuImg">
+						<img src="../image/index/securityCheck.png" />
+					</div>
+					<div class="menuText">
+						<span class="first">安全检查</span>
+						<span class="second">发现和消除事故隐患、落实安全措施</span>
+					</div>
+					<img class="third" src="../image/public/next.png" />
+				</div>
+				<div class="menuList maintenance">
+					<div class="menuImg">
+						<img src="../image/index/maintenance.png" />
+					</div>
+					<div class="menuText">
+						<span class="first">维修保养</span>
+						<span class="second">提供高品质的维修保养服务维修服务</span>
+					</div>
+					<img class="third" src="../image/public/next.png" />
+				</div>
+				<div class="menuList reportCenter">
+					<div class="menuImg">
+						<img src="../image/index/reportCenter.png" />
+					</div>
+					<div class="menuText">
+						<span class="first">报表中心</span>
+						<span class="second">对数据进行统计、整合和多维度分析</span>
+					</div>
+					<img class="third" src="../image/public/next.png" />
+				</div>
+			</div>
+			
+		</div>
+		
+		<nav class="mui-bar mui-bar-tab button-nav">
+			<a class="mui-tab-item mui-active">
+				<span>
+					<img src="../image/public/home-checked.png"/>
+				</span>
+				<span>首页</span>
+			</a>
+			<a class="mui-tab-item" onclick="toPersonCenter()">
+				<span>
+					<img src="../image/public/personal-center.png"/>
+				</span>
+				<span>个人中心</span>
+			</a>
+		</nav>
+		
+		<script src="../js/mui.js"></script>
+		<script src="../js/jquery.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			
+			$(function(){
+				$(".menuList").on("click",function() {
+					let classes = this.className;
+					classes = classes.replace("menuList ","");
+					toNextPage(classes);
+				});
+			});
+			
+			function toPersonCenter() {
+				window.location.href = "./personalCenter.html"
+			}
+			
+			function toNextPage(page) {
+				window.location.href = "./manage/" + page + ".html"
+			}
+			
+			function getBaseUrl () {
+				let baseUrl = window.location.href;
+				baseUrl = baseUrl.substring(0,(baseUrl.lastIndexOf("/")));
+				return baseUrl;
+			}
+		</script>
+	</body>
+
+</html>
