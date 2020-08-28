@@ -7,6 +7,13 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.css" rel="stylesheet"/>
 		<link href="../../css/public.css" rel="stylesheet" />
+		<link href="../../css/mui.picker.min.css" rel="stylesheet" />
+		<link href="../../css/mui.poppicker.css" rel="stylesheet" />
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/jquery.js"></script>
+		<script src="../../js/mui.picker.min.js"></script>
+		<script src="../../js/mui.poppicker.js"></script>
+		<script src="../../js/public.js"></script>
 	</head>
 
 	<body>
@@ -19,13 +26,13 @@
 		
 		<div class="mui-content">
 			<form class="form-content">
-			    <div class="input-row-new">
+				<div class="input-row-new">
 					<label>账户名</label>
 					<input type="text" name="fullName" class="input-box" placeholder="请输入账户名"/>
 				</div>
 				<div class="input-row-new">
 					<label>性别</label>
-					<input type="text" name="gender" class="select-box" placeholder="请选择性别"/>
+					<input type="text" name="gender" id="gender" class="select-box" placeholder="请选择性别"/>
 				</div>
 				<div class="input-row-new">
 					<label>邮箱</label>
@@ -68,14 +75,31 @@
 					<input type="text" name="autograph" class="input-box" placeholder="请输入您的签名"/>
 				</div>
 			</form>
+			
+			
+			
+			<!-- <div class="choice-box">
+				<div class="choice-title">
+					<span>
+						完成
+					</span>
+				</div>
+				<div class="choice-options">
+					<div>男</div>
+					<div>女</div>
+				</div>
+			</div> -->
+			
 		</div>
 		
-		
-		<script src="../../js/mui.min.js"></script>
-		<script src="../../js/jquery.js"></script>
-		<script src="../../js/public.js"></script>
 		<script type="text/javascript">
-			mui.init()
+			
+			$(function(){
+				
+				$(".select-box").on("tap",function(){
+					fullSelect([{value:'男',text:'男'},{value:'女',text:'女'}],"#gender");
+				});
+			})
 			
 			function saveData() {
 				alert(12);

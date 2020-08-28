@@ -40,12 +40,14 @@
 <script type="text/javascript" charset="utf-8">
 	
 	mui.init();
+	let portalUrl = "http://192.168.0.99:2222/portal-web";
 	
 	$(function(){
 		//获取基础路径，以供使用
 		let url = window.location.href;
 		url = url.replace("login.html","");
 		window.sessionStorage.setItem("baseUrl",url);
+		window.sessionStorage.setItem("portalUrl",portalUrl);
 	})
 	
 	$(document).on("click",".login",function(){
@@ -56,14 +58,19 @@
 	        return false;
 	    }
 		$.ajax({
-			url: "http://192.168.0.99:2222/portal-web/admin/mblogin",
+			url: portalUrl + "/admin/mblogin",
 			type: "post",
 			data: {"username":username,"password":password,"rememberMe":true},
 			success: function (json) {
-				console.log(json);
-				console.log(document.Cookies);
-				// window.location.href = window.sessionStorage.getItem("baseUrl") + "views/index.html";
+				window.sessionStorage.setItem("loginStatus",json.data);
+				window.location.href = window.sessionStorage.getItem("baseUrl") + "views/index.html";
 			}
+			/* ,complete: function(xhr, res) {
+				console.log(xhr.getAllResponseHeaders());
+				console.log(xhr.getResponseHeader('remember_authorization'));
+				console.log(xhr.getResponseHeader('Set-Cookie'));
+				console.log(res);
+			} */
 		})
 	});
 </script>

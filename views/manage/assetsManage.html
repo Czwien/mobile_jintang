@@ -8,6 +8,9 @@
 		<link href="../../css/mui.css" rel="stylesheet" />
 		<link href="../../css/public.css" rel="stylesheet"/>
 		<link href="../../css/manage/assetsManage.css" rel="stylesheet"/>
+		<script src="../../js/mui.js"></script>
+		<script src="../../js/jquery.js"></script>
+		<script src="../../js/public.js"></script>
 	</head>
 
 	<body>
@@ -121,9 +124,6 @@
 			</a>
 		</nav>
 		
-		<script src="../../js/mui.js"></script>
-		<script src="../../js/jquery.js"></script>
-		<script src="../../js/public.js"></script>
 		<script type="text/javascript">
 			mui.init()
 			
@@ -133,10 +133,10 @@
 					classes = classes.replace("mui-table-view-cell ","");
 					toNextPage(classes);
 				});
-			})
+			});
 			
 			function toNextPage(page) {
-				window.location.href = baseUrl + "views/assetsManage/" + page + ".html"
+				window.location.href = baseUrl + "views/manage/assetsManage/" + page + ".html"
 			}
 			
 			function toIndex() {

@@ -1,20 +1,16 @@
 let baseUrl = window.sessionStorage.getItem("baseUrl");
+let portalUrl = window.sessionStorage.getItem("portalUrl");
 
-function pui() {
-	this.confirm = function (title,body,bt1,bt2,cllback) {
-		let dialog = "<div class='confirm'>"+
-						"<div class='confirm-content'>"+
-							"<div class='content-title'>"+title+"</div>"+
-							"<div class='content-main-body'>"+body+"</div>"+
-						"</div>"+
-						"<div class='confirm-buttom'>"+
-							"<buttom>"+bt1+"</buttom>"+
-							"<buttom>"+bt2+"</buttom>"+
-						"</div>"+
-					"</div>"
-		$(".mui-content").append(dialog);
-	}
+// 判断登录状态
+let loginStatus = window.sessionStorage.getItem("loginStatus");
+if ( !loginStatus ) {
+	window.location.href = baseUrl + "login.html";
+} else {
+	let cookie = loginStatus + ";" + ";path=/;";
+	document.cookie = cookie;
 }
+
+mui.init()
 
 $(function(){
 	
@@ -37,3 +33,15 @@ $(function(){
 		});
 	}
 });
+
+/**
+ * @param {Object} obj 数组，选择值
+ * @param {Object} selecttor 选择器，将要给哪个元素注入值
+ */
+function fullSelect(obj,selecttor) {
+	var picker = new mui.PopPicker();
+	picker.setData(obj);
+	picker.show(function (selectItems) {
+		$(selecttor).val(selectItems[0].value);
+	});
+}
