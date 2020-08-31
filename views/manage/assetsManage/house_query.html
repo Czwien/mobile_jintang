@@ -1,0 +1,88 @@
+<!Doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../css/mui.css" rel="stylesheet" />
+		<link href="../../../css/public.css" rel="stylesheet"/>
+		<link href="../../../css/manage/assetsManage.css" rel="stylesheet"/>
+		<script src="../../../js/mui.js"></script>
+		<script src="../../../js/jquery.js"></script>
+		<script src="../../../js/public.js"></script>
+	</head>
+	<body>
+		
+		<header class="mui-bar mui-bar-nav title-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">房屋高级查询</h1>
+		</header>
+		
+		<div class="mui-content">
+			<div class="button-query">
+				<button class="search">查询</button>
+			</div>
+			
+			<div class="title-suggests">
+				<span>查询条件</span>
+			</div>
+			
+			<form id="dataForm">
+				<div class="query-condition">
+					<div class="query-condition-item">
+						<span>资产编号</span>
+						<input type="text" name="a|assetsNo|LK|S" placeholder="请输入资产编号"/>
+					</div>
+					<div class="query-condition-item">
+						<span>资产名称</span>
+						<input type="text" name="a|assetsName|LK|S" placeholder="请输入资产名称"/>
+					</div>
+					<div class="select-condition-item select-query-box">
+						<span>资产状态</span>
+						<input name="a|assetsStatus|LK|S" type="text" readonly placeholder="请选择资产状态"/>
+						<img src="../../../image/public/next.png" />
+					</div>
+					<div class="double-input-box">
+						<span>楼层</span>
+						<input name="h|hfloor|RE|S" type="text" placeholder="起始楼层"/>
+						<div class="input-separator"> </div>
+						<input name="h|hfloor|LE|S" class="second-input" type="text" placeholder="终止楼层"/>
+					</div>
+					<div class="double-input-box">
+						<span>取得时间</span>
+						<input name="a|getDate|RE|S" type="text" placeholder="起始日期"/>
+						<img class="first-img" src="../../../image/public/next.png" />
+						<div class="input-separator"> </div>
+						<input name="a|getDate|LE|S" class="second-input" type="text" placeholder="终止日期"/>
+						<img class="second-img" src="../../../image/public/next.png" />
+					</div>
+				</div>
+			</form>
+			
+		</div>
+		
+		<script type="text/javascript">
+			
+			let saveId = null;
+			
+			$(function (){
+				let startIndex = window.location.href.indexOf("?") + 1;
+				saveId = (window.location.href).substring(startIndex);
+				
+				$(".select-query-box").on("tap",function(){
+					
+				});
+				
+				$(".search").on("tap",function(){
+					let queryCondition = serializeJson("#dataForm");
+					window.localStorage.setItem(saveId,JSON.stringify(queryCondition));
+					window.location.href = baseUrl + "views/manage/assetsManage/house.html?" + saveId;
+				});
+				
+			});
+			
+		</script>
+		
+	</body>
+</html>

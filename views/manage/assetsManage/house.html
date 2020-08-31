@@ -28,7 +28,7 @@
 				<form class="form-content">
 					<div class="query-input">
 						<span class="query-img"><img src="../../../image/public/query.png"></span>
-						<input type="text" name="ctctNo" placeholder="点击查询"/>
+						<input type="text" name="ctctNo" id="ctctNo" readonly placeholder="点击查询"/>
 						<span class="cancal-img"><img src="../../../image/public/cancal.png"></span>
 					</div>
 				</form>
@@ -99,6 +99,23 @@
 		</div>
 		
 		<script type="text/javascript">
+			
+			$(function(){
+				
+				// 获取并判断是否有uuid传递，以便取出查询条件
+				let url = window.location.href;
+				if (url.indexOf("?") != -1) {
+					let localUuid = url.substring(url.indexOf("?")+1);
+					let queryCondition = window.localStorage.getItem(localUuid);
+					localStorage.removeItem(localUuid);
+				}
+				
+				$("#ctctNo").on("tap",function(){
+					let uuid = getUuid();
+					window.location.href = baseUrl + "views/manage/assetsManage/house_query.html?" + uuid;
+				});
+				
+			});
 			
 		</script>
 	</body>

@@ -291,48 +291,95 @@ html,body,.mui-content {
 	border-right: 1px solid #B3B3B3;
 }
 
-/************************************选择框***************************/
-/* .choice-box {
-	width: 100%;
-	height: 230px;
-	background-color: #f5f5f5;
-	position: absolute;
-	bottom: 0;
-	z-index: 9999;
-	opacity: 0.95;
+/**************************************高级查询*****************************/
+.button-query {
+	padding: 20px 0;
+	background-color: #FFFFFF;
+	text-align: center;
 }
 
-.choice-title {
-	width: 100%;
-	height: 22%;
-	display: flex;
-	align-items: center;
-	flex-direction: row-reverse;
-	border-bottom: 1px solid #B3B3B3;
+.search {
+	width: 85%;
+	padding: 8px 0;
+	border: 1px solid #0278FB;
+	font-size: 15px;
+	color: #0278FB;
 }
 
-.choice-title span {
-	padding: 3px 20px 0px 0px;
-	font-size: 18px;
-	color: #666666;
+.query-condition {
+	margin-top: 5px;
+	background-color: #FFFFFF;
 }
 
-.choice-options {
-	width: 100%;
-	height: 77%;
-	overflow-y: scroll;
-}
-
-.choice-options::-webkit-scrollbar {
-  width: 0;
-}
-
-.choice-options div {
-	width: 100%;
-	height: 40px;
+.query-condition-item,.select-condition-item,.double-input-box {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-} */
+	border-bottom: 1px solid #B3B3B3;
+}
 
-/************************************ */
+.select-condition-item {
+	position: relative;
+}
+
+.query-condition-item span,.select-condition-item span,.double-input-box span{
+	font-size: 15px;
+	display: inline-block;
+	width: 35%;
+	transform: translate(10px,0);
+	-ms-transform: translate(10px,0);
+}
+
+.query-condition-item input{
+	transform: translate(-8px,23%);
+	-ms-transform: translate(-8px,23%);
+	border: 0px;
+	font-size: 13px;
+	height: 32px;
+	width: 90%;
+}
+
+.select-condition-item input {
+	transform: translate(-8px,23%);
+	-ms-transform: translate(-8px,23%);
+	border: 0px;
+	font-size: 13px;
+	height: 32px;
+	width: 90%;
+}
+
+.select-condition-item img {
+	width: 8px;
+	height: 12px;
+	position: absolute;
+	left: 95%;
+}
+
+.double-input-box input{
+	transform: translate(-8px,23%);
+	-ms-transform: translate(-8px,23%);
+	border: 0px;
+	font-size: 13px;
+	height: 32px;
+	width: 40%;
+}
+
+.input-separator {
+	width: 15px;
+	height: 20px;
+	border-left: 1px solid #B3B3B3;
+}
+
+.first-img {
+	width: 8px;
+	height: 12px;
+	position: absolute;
+	left: 55%;
+}
+
+.second-img {
+	width: 8px;
+	height: 12px;
+	position: absolute;
+	left: 95%;
+}
