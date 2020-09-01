@@ -13,6 +13,7 @@
 		<script src="../../js/jquery.js"></script>
 		<script src="../../js/mui.picker.min.js"></script>
 		<script src="../../js/mui.poppicker.js"></script>
+		<script src="../../config.js"></script>
 		<script src="../../js/public.js"></script>
 	</head>
 
@@ -28,7 +29,7 @@
 			<form class="form-content">
 				<div class="input-row-new">
 					<label>账户名</label>
-					<input type="text" name="fullName" class="input-box" placeholder="请输入账户名"/>
+					<input type="text" readonly name="fullName" class="input-box" placeholder="请输入账户名"/>
 				</div>
 				<div class="input-row-new">
 					<label>性别</label>
@@ -76,34 +77,33 @@
 				</div>
 			</form>
 			
-			
-			
-			<!-- <div class="choice-box">
-				<div class="choice-title">
-					<span>
-						完成
-					</span>
-				</div>
-				<div class="choice-options">
-					<div>男</div>
-					<div>女</div>
-				</div>
-			</div> -->
-			
 		</div>
 		
 		<script type="text/javascript">
 			
 			$(function(){
 				
+				ajaxJson(BASE.config.portalUrl + 'admin/user/currentUser','post',fullForm);
+				
 				$(".select-box").on("tap",function(){
-					fullSelect([{value:'男',text:'男'},{value:'女',text:'女'}],"#gender");
+					selective(fillSelect('sex'),"#gender");
 				});
 			})
 			
 			function saveData() {
-				alert(12);
+				let fromData = serializeJson(".form-content");
+				console.log(fromData);
+				ajaxJson(BASE.config.portalUrl + 'admin/user/upadteUserMes','post',success,fromData);
 			}
+			
+			function fullForm(data){
+				loadForm(data.obj,'.form-content');
+			}
+			
+			function success(data) {
+				location.href = baseUrl + 'views/personalCenter.html';
+			}
+			
 		</script>
 	</body>
 

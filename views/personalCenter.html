@@ -10,6 +10,7 @@
 		<link href="../css/personalCenter.css" rel="stylesheet"/>
 		<script src="../js/mui.js"></script>
 		<script src="../js/jquery.js"></script>
+		<script src="../config.js"></script>
 		<script src="../js/public.js"></script>
 	</head>
 
@@ -24,9 +25,9 @@
 			<div class="top-title">
 				<img src="../image/personalCenter/personalBackground.png"/>
 				<div class="head-portrait">
-					<img src="../image/personalCenter/timg.png">
+					<img id="people-head" src="../image/personalCenter/timg.png">
 				</div>
-				<div class="role-name">
+				<div id="people-name" class="role-name">
 					管理员
 				</div>
 			</div>
@@ -82,32 +83,30 @@
 					} else {
 						mui.confirm("您确认要退出登录吗?","提示",["取消","确认"],function(res){
 							if (res.index == 1) {
+								ajaxJson(BASE.config.portalUrl + 'admin/loginout','post',toLogin);
 								window.location.href = baseUrl + 'login.html';
 							}
 						},"div");
 					}
 				});
 				
-				$.ajax({
-					url: portalUrl + "/admin/user/currentUser",
-					dataType:'json',
-					type:'post',
-					/* beforeSend: function(xhr) {
-						xhr.setRequestHeader("cookie",loginStatus);
-					}, */
-					crossDomain: true,
-					xhrFields: {
-					  withCredentials: true
-					},
-					success:function(data){
-						console.log(data);
-					}
-				})
+				ajaxJson(BASE.config.portalUrl+'admin/user/currentUser',
+					'post',fullUserNews);
 				
 			});
 			
 			function toIndex() {
 				window.location.href = baseUrl + "views/index.html";
+			}
+			
+			function fullUserNews(data) {
+				data = data.obj;
+				$("#people-head").attr('src',BASE.config.portalUrl + data.icon);
+				$("#people-name").html(data.fullName);
+			}
+			
+			function toLogin(){
+				window.location.href = baseUrl + "login.html";
 			}
 			
 		</script>

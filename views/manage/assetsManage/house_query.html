@@ -10,6 +10,7 @@
 		<link href="../../../css/manage/assetsManage.css" rel="stylesheet"/>
 		<script src="../../../js/mui.js"></script>
 		<script src="../../../js/jquery.js"></script>
+		<script src="../../../config.js"></script>
 		<script src="../../../js/public.js"></script>
 	</head>
 	<body>
@@ -67,6 +68,9 @@
 			let saveId = null;
 			
 			$(function (){
+		
+				initMui();
+				
 				let startIndex = window.location.href.indexOf("?") + 1;
 				saveId = (window.location.href).substring(startIndex);
 				

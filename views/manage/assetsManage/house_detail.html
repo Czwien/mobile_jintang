@@ -1,0 +1,59 @@
+<!Doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../css/mui.css" rel="stylesheet" />
+		<link href="../../../css/public.css" rel="stylesheet"/>
+		<link href="../../../css/manage/assetsManage.css" rel="stylesheet"/>
+		<script src="../../../js/mui.js"></script>
+		<script src="../../../js/jquery.js"></script>
+		<script src="../../../config.js"></script>
+		<script src="../../../js/public.js"></script>
+	</head>
+	<body>
+		
+		<header class="mui-bar mui-bar-nav title-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">房屋详情</h1>
+		</header>
+		
+		<div class="mui-content">
+			<div class="title-suggests">
+				<span>查询条件</span>
+			</div>
+			
+			<div class="query-condition">
+				<div class="condition"></div>
+				<div class="twoLines"></div>
+			</div>
+			
+			<div class="title-suggests">
+				<span>资产定位</span>
+			</div>
+			<div class="show-map" id="container">
+				
+			</div>
+			
+		</div>
+		
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=mGG3YXur4hU0jSR21uDWSGqz33WGs1iP"></script>
+		<script type="text/javascript" src="../../../js/map.js"></script>
+		<script type="text/javascript">
+			
+			$(function() {
+				
+				initMui();
+				
+				let html1 = createDetails_oneWay("资产编号","ceshi");
+				let html2 = createDatails_twoLines("结构","楼层","钢构","3楼");
+				$(".condition").append(html1);
+				$(".twoLines").append(html2);
+			});
+			
+		</script>
+		
+	</body>
+</html>

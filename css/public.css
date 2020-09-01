@@ -8,7 +8,7 @@ html,body,.mui-content {
 	background-color: #0278fb!important;
 }
 
-.title-nav a {
+.title-nav span,.title-nav a {
 	color: #FFFFFF;
 }
 
@@ -308,7 +308,6 @@ html,body,.mui-content {
 
 .query-condition {
 	margin-top: 5px;
-	background-color: #FFFFFF;
 }
 
 .query-condition-item,.select-condition-item,.double-input-box {
@@ -316,6 +315,7 @@ html,body,.mui-content {
 	align-items: center;
 	justify-content: center;
 	border-bottom: 1px solid #B3B3B3;
+	background-color: #FFFFFF;
 }
 
 .select-condition-item {
@@ -337,6 +337,7 @@ html,body,.mui-content {
 	font-size: 13px;
 	height: 32px;
 	width: 90%;
+	color: #666666;
 }
 
 .select-condition-item input {
@@ -346,6 +347,7 @@ html,body,.mui-content {
 	font-size: 13px;
 	height: 32px;
 	width: 90%;
+	color: #666666;
 }
 
 .select-condition-item img {
@@ -382,4 +384,53 @@ html,body,.mui-content {
 	height: 12px;
 	position: absolute;
 	left: 95%;
+}
+
+/***************************************详情页面展示***************************/
+.condition input {
+	text-align: right;
+}
+
+.twoLines {
+	margin-top: 5px;
+	background-color: #FFFFFF;
+}
+
+.query-two-lines {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-bottom: 1px solid #B3B3B3;
+}
+
+.query-two-lines span {
+	font-size: 15px;
+	display: inline-block;
+	width: 35%;
+	transform: translate(10px,0);
+	-ms-transform: translate(10px,0);
+}
+
+.query-two-lines input {
+	transform: translate(0px,23%);
+	-ms-transform: translate(-8px,23%);
+	border: 0px;
+	font-size: 13px;
+	height: 32px;
+	text-align: right;
+	color: #666666;
+}
+
+.two-lines-separate {
+	width: 15px;
+	height: 20px;
+	border-left: 1px solid #B3B3B3;
+	margin-left: 10px;
+}
+
+/***********************************详情页面地图*************************/
+.show-map {
+	margin-top: 5px;
+	height: 300px;
+	border: 1px solid #B3B3B3;
 }

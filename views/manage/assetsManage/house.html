@@ -10,13 +10,14 @@
 		<link href="../../../css/manage/assetsManage.css" rel="stylesheet"/>
 		<script src="../../../js/mui.js"></script>
 		<script src="../../../js/jquery.js"></script>
+		<script src="../../../config.js"></script>
 		<script src="../../../js/public.js"></script>
 	</head>
 	
 	<body>
 		
 		<header class="mui-bar mui-bar-nav title-nav">
-			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<span class="mui-icon mui-icon-back"></span>
 			<h1 class="mui-title">房屋查询</h1>
 		</header>
 		
@@ -39,59 +40,7 @@
 			<div class="mui-scroll-wrapper assetsQuery">
 				<div class="mui-scroll">
 					<div class="content-query-list">
-						<div class="content-query-item">
-							<div class="item-title">
-								<div class="item-no">
-									<span>渝隆房屋编号001</span>
-									<img src="../../../image/public/next.png">
-								</div>
-								<div class="item-name">
-									资产名称：南岸区南坪街道惠工路35号第16层
-								</div>
-							</div>
-							<div class="severance"></div>
-							<div class="item-status">
-								<div>
-									<div class="status-head">资产状态</div>
-									<div class="status-main">已租</div>
-								</div>
-								<div class="status-division">
-									<div class="status-head">自主分类</div>
-									<div class="status-main">房屋</div>
-								</div>
-								<div>
-									<div class="status-head">抵押状态</div>
-									<div class="status-main">已抵押</div>
-								</div>
-							</div>
-						</div>
 						
-						<div class="content-query-item">
-							<div class="item-title">
-								<div class="item-no">
-									<span>渝隆房屋编号001</span>
-									<img src="../../../image/public/next.png">
-								</div>
-								<div class="item-name">
-									资产名称：南岸区南坪街道惠工路35号第16层
-								</div>
-							</div>
-							<div class="severance"></div>
-							<div class="item-status">
-								<div>
-									<div class="status-head">资产状态</div>
-									<div class="status-main">已租</div>
-								</div>
-								<div class="status-division">
-									<div class="status-head">自主分类</div>
-									<div class="status-main">房屋</div>
-								</div>
-								<div>
-									<div class="status-head">抵押状态</div>
-									<div class="status-main">未抵押</div>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -100,13 +49,15 @@
 		
 		<script type="text/javascript">
 			
+			let queryParams = {};
+			
 			$(function(){
 				
 				// 获取并判断是否有uuid传递，以便取出查询条件
 				let url = window.location.href;
 				if (url.indexOf("?") != -1) {
 					let localUuid = url.substring(url.indexOf("?")+1);
-					let queryCondition = window.localStorage.getItem(localUuid);
+					queryParams = JSON.parse(localStorage.getItem(localUuid));
 					localStorage.removeItem(localUuid);
 				}
 				
@@ -115,7 +66,38 @@
 					window.location.href = baseUrl + "views/manage/assetsManage/house_query.html?" + uuid;
 				});
 				
+				$(".cancal-img").on("tap",function(){
+					queryParams = {};
+					location.href = baseUrl + "views/manage/assetsManage/house.html";
+				});
+				
+				$(".content-query-item").on("tap",function(){
+					let id = $(this).data("id");
+					location.href = baseUrl + "views/manage/assetsManage/house_detail.html?" + id;
+				});
+				
+				$(".title-nav span").on("tap",function(){
+					location.href = baseUrl + "views/manage/assetsManage.html";
+				});
+				
+				initMui(".assetsQuery",refreshData);
+				
 			});
+			
+			function refreshData() {
+				queryParams.page = page;
+				queryParams.limit = limit;
+				ajaxJson(BASE.config.assetsUrl + 'admin//house/findAll?a|flowState|E|S=3&isChooser=1',
+					'post',success,queryParams);
+			}
+			
+			// ajax成功回调函数
+			function success(res) {
+				let data = res.data;
+				createList(data,'.content-query-list');
+				judgmentResult(page,data.count,'.assetsQuery');
+				page++;
+			}
 			
 		</script>
 	</body>
