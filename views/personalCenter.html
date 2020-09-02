@@ -84,6 +84,7 @@
 						mui.confirm("您确认要退出登录吗?","提示",["取消","确认"],function(res){
 							if (res.index == 1) {
 								ajaxJson(BASE.config.portalUrl + 'admin/loginout','post',toLogin);
+								sessionStorage.clear();
 								window.location.href = baseUrl + 'login.html';
 							}
 						},"div");
@@ -91,7 +92,7 @@
 				});
 				
 				ajaxJson(BASE.config.portalUrl+'admin/user/currentUser',
-					'post',fullUserNews);
+					'post',success);
 				
 			});
 			
@@ -99,9 +100,9 @@
 				window.location.href = baseUrl + "views/index.html";
 			}
 			
-			function fullUserNews(data) {
+			function success(data) {
 				data = data.obj;
-				$("#people-head").attr('src',BASE.config.portalUrl + data.icon);
+				$("#people-head").attr('src',BASE.config.portalUrl + data.avatar);
 				$("#people-name").html(data.fullName);
 			}
 			

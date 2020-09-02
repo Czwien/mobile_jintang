@@ -61,6 +61,11 @@
 			type: "post",
 			data: {"username":username,"password":password,"rememberMe":true},
 			success: function (json) {
+				if (json.code != 100) {
+					mui.alert(json.message,'提示');
+					$(".loginForm")[0].reset();
+					return;
+				}
 				window.location.href = window.sessionStorage.getItem("baseUrl") + "views/index.html";
 			}
 			,complete: function(xhr, res) {

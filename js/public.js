@@ -70,6 +70,20 @@ function initMui(selector,callback) {
 }
 
 /**
+ * 初始化滑动区域
+ */
+function initScroll(){
+	mui('.mui-scroll-wrapper').scroll({
+		 scrollY: true, //是否竖向滚动
+		 startX: 0, //初始化时滚动至x
+		 startY: 0, //初始化时滚动至y
+		 indicators: true, //是否显示滚动条
+		 deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+		 bounce: true //是否启用回弹
+	});
+}
+
+/**
  * 确认是否可继续下拉
  * @param {Object} page
  * @param {Object} amount
@@ -156,23 +170,26 @@ function selective(obj,selector) {
 
 /**
  * 填充选择器 (时间框)
- * @param {Object} obj 数组，选择值
  * @param {Object} selecttor 选择器，将要给哪个元素注入值
+ * @param {Object} type 类型
  */
-function selective(obj,selector,type) {
+function fillTime(selector,type) {
 	var dtPicker = new mui.DtPicker({
 		type: type
 	});
 	dtPicker.show(function (selectItems) {
 		switch(type) {
 			case 'datetime':
-				
+				$(selector).val(selectItems.y.value + '-'
+					+ selectItems.m.value + '-' + selectItems.d.value + '-'
+					+ selectItems.h.value + '-' + selectItems.i.value);
 			break;
 			case 'date':
-				
+				$(selector).val(selectItems.y.value + '-'
+					+ selectItems.m.value + '-' + selectItems.d.value);
 			break;
 			case 'time':
-				
+				$(selector).val(selectItems.h.value + '-' + selectItems.i.value);
 			break;
 			case 'month':
 				$(selector).val(selectItems.y.value + '-'
@@ -180,7 +197,8 @@ function selective(obj,selector,type) {
 			break;
 			case 'hour':
 				$(selector).val(selectItems.y.value + '-'
-					+ selectItems.m.value + '-' + selectItems.d.value);
+					+ selectItems.m.value + '-' + selectItems.d.value
+					+ selectItems.h.value);
 			break;
 		}
 	});
@@ -295,10 +313,13 @@ function createList(data,selector) {
  * @param {Object} value 显示值
  */
 function createDetails_oneWay(title,value) {
+	if (!value) {
+		value = ' ';
+	}
 	let html = `
 		<div class="query-condition-item">
 			<span>${title}</span>
-			<input type="text" value="${value}" placeholder="请输入资产编号"/>
+			<input readonly type="text" value="${value}" placeholder="请输入资产编号"/>
 		</div>
 	`;
 	return html;
@@ -312,14 +333,109 @@ function createDetails_oneWay(title,value) {
  * @param {Object} value1
  */
 function createDatails_twoLines(title1,title2,value1,value2) {
+	if (!value1) {
+		value1 = ' ';
+	}
+	if (!value2) {
+		value2 = ' ';
+	}
 	let html = `
 		<div class="query-two-lines">
 			<span>${title1}</span>
-			<input type="text" value="${value1}"/>
+			<input readonly type="text" value="${value1}"/>
 			<div class="two-lines-separate"></div>
 			<span>${title2}</span>
-			<input type="text" value="${value2}"/>
+			<input readonly type="text" value="${value2}"/>
 		</div>
 	`;
 	return html;
+}
+
+/**
+ * 详情页面图片生成
+ * @param {Object} data 数组，图片信息
+ */
+function createDetails_picture(data){
+	let html = $('<div id="picture0" class="picture-cell"></div>');
+	let count = 0,idCount = 0;
+	for (let i in data) {
+		let fileName = data[i].fileName.toUpperCase();
+		if (count != 0 && count % 3 ==0) {
+			$(".show-picture").append(html);
+			idCount++;
+			html = $('<div id="picture"'+idCount+' class="picture-cell"></div>');
+		}
+		
+		if (fileName.indexOf('.PNG') != -1 || fileName.indexOf('.JPG') != -1
+			|| fileName.indexOf('.JPEG') != -1) {	
+			var xhr = new XMLHttpRequest();
+			xhr.open("get", BASE.config.assetsUrl + '/admin/upload/download/?id='+data[i].fileId, true);
+			xhr.responseType = "blob";
+			xhr.setRequestHeader('Authorization',loginStatus);
+			xhr.onload = function() {
+				if (this.status == 200) {
+					var blob = this.response;
+					var img = document.createElement("img");
+					img.onload = function(e) {
+						window.URL.revokeObjectURL(img.src);
+					};
+					img.src = window.URL.createObjectURL(blob);
+					html.append(img);
+				}
+			};
+			xhr.send();	
+			count++;
+		}
+	}
+	if (count == 0) {
+		html.append('<img src="../../../image/assetsManange/noPicture.png">')
+	}
+	$(".show-picture").append(html);
+}
+
+/**
+ * 详情页面生成附件
+ * @param {Object} data
+ */
+function createDetails_files(data) {
+	let count = true;
+	for (let i in data) {
+		let fileName = data[i].fileName.toUpperCase();
+		if (fileName.indexOf('.PNG') == -1 && fileName.indexOf('.JPG') == -1
+			&& fileName.indexOf('.JPEG') == -1) {
+			$(".show-files").append("<span data-id='"+data[i].fileId+"'>附件名: "+data[i].fileName+"</span>")
+			count = false;
+		}
+	}
+	if (count) {
+		$(".show-files").append("<span>暂无相关附件</span>")
+	}
+}
+
+/**
+ * 详情页面权证信息生成
+ * @param {Object} certificate
+ */
+function createDetails_certificate(certificate){
+	for (let i in certificate) {
+		let data = certificate[i];
+		let html = createDetails_oneWay('产权证号',data.cerNo)
+			+ createDetails_oneWay('详细地址',data.located)
+			+ createDatails_twoLines('原权利人','权利人',data.oldObligee,data.obligee)
+			+ createDatails_twoLines('地号','用途',data.qiudiNo,data.groundType)
+			+ createDatails_twoLines('结构','共用情况',data.structure,data.commonSituation)
+			+ createDatails_twoLines('使用权类型','共用情况',data.useType,'');
+		if (i != 0) {
+			$(".show-certificate").append("<div style='height:5px;background-color:none;'></div>");
+		}	
+		$(".show-certificate").append(html);
+	}
+}
+
+/**
+ * 获取访问路径中的参数信息
+ */
+function getParams(){
+	let url = location.href;
+	return url.substring(url.indexOf('?')+1);
 }

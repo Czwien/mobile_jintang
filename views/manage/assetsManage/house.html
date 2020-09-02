@@ -61,25 +61,6 @@
 					localStorage.removeItem(localUuid);
 				}
 				
-				$("#ctctNo").on("tap",function(){
-					let uuid = getUuid();
-					window.location.href = baseUrl + "views/manage/assetsManage/house_query.html?" + uuid;
-				});
-				
-				$(".cancal-img").on("tap",function(){
-					queryParams = {};
-					location.href = baseUrl + "views/manage/assetsManage/house.html";
-				});
-				
-				$(".content-query-item").on("tap",function(){
-					let id = $(this).data("id");
-					location.href = baseUrl + "views/manage/assetsManage/house_detail.html?" + id;
-				});
-				
-				$(".title-nav span").on("tap",function(){
-					location.href = baseUrl + "views/manage/assetsManage.html";
-				});
-				
 				initMui(".assetsQuery",refreshData);
 				
 			});
@@ -87,7 +68,7 @@
 			function refreshData() {
 				queryParams.page = page;
 				queryParams.limit = limit;
-				ajaxJson(BASE.config.assetsUrl + 'admin//house/findAll?a|flowState|E|S=3&isChooser=1',
+				ajaxJson(BASE.config.assetsUrl + 'admin/house/findAll?a|flowState|E|S=3&isChooser=1',
 					'post',success,queryParams);
 			}
 			
@@ -98,6 +79,26 @@
 				judgmentResult(page,data.count,'.assetsQuery');
 				page++;
 			}
+			
+			$("#ctctNo").on("tap",function(){
+				let uuid = getUuid();
+				window.location.href = baseUrl + "views/manage/assetsManage/house_query.html?" + uuid;
+			});
+			
+			$(".cancal-img").on("tap",function(){
+				queryParams = {};
+				location.href = baseUrl + "views/manage/assetsManage/house.html";
+			});
+			
+			$(".title-nav span").on("tap",function(){
+				location.href = baseUrl + "views/manage/assetsManage.html";
+			});
+			
+			mui('.mui-content').on('tap','.content-query-item',function(){
+				let id = $(this).data("id");
+				console.log(id);
+				location.href = baseUrl + "views/manage/assetsManage/house_detail.html?" + id;
+			});
 			
 		</script>
 	</body>

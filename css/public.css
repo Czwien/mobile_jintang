@@ -323,7 +323,7 @@ html,body,.mui-content {
 }
 
 .query-condition-item span,.select-condition-item span,.double-input-box span{
-	font-size: 15px;
+	font-size: 14px;
 	display: inline-block;
 	width: 35%;
 	transform: translate(10px,0);
@@ -387,6 +387,10 @@ html,body,.mui-content {
 }
 
 /***************************************详情页面展示***************************/
+.assetsDetails {
+	margin-top: 40px;
+}
+
 .condition input {
 	text-align: right;
 }
@@ -404,9 +408,9 @@ html,body,.mui-content {
 }
 
 .query-two-lines span {
-	font-size: 15px;
+	font-size: 14px;
 	display: inline-block;
-	width: 35%;
+	width: 100%;
 	transform: translate(10px,0);
 	-ms-transform: translate(10px,0);
 }
@@ -433,4 +437,36 @@ html,body,.mui-content {
 	margin-top: 5px;
 	height: 300px;
 	border: 1px solid #B3B3B3;
+}
+/***********************************详情页面图片*****************************/
+.show-picture {
+	margin-top: 5px;
+	background-color: #FFFFFF;
+}
+
+.picture-cell {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 5px;
+}
+
+.picture-cell img {
+	width: 32%;
+	height: 100%;
+}
+
+/***********************************详情页面附件******************************/
+.show-files {
+	margin-top: 5px;
+	padding-left: 10px;
+	background-color: #FFFFFF;
+}
+
+.show-files span {
+	font-size: 13px;
+	color: #666666;
+}
+
+.show-certificate {
+	background-color: #FFFFFF;
 }

@@ -1,5 +1,10 @@
 let map = null,point = null,marker = null,myIcon = null;
 
+/**
+ * 百度地图初始化
+ * @param {Object} x
+ * @param {Object} y
+ */
 function initMap(x,y) {
 	map = new BMap.Map("container");          // 创建地图实例 
 	point = new BMap.Point(x, y);  // 创建点坐标 
@@ -14,11 +19,17 @@ function initMap(x,y) {
 	map.addOverlay(marker);
 }
 
+/**
+ * 地址解析
+ * @param {Object} address
+ * @param {Object} city
+ * @param {Object} data
+ */
 function addressResolution(address,data,city) {
 	if (data) {
 		if (data.assetsPointX && data.assetsPointY) {
 			initMap(data.assetsPointX, data.assetsPointY);
-		} else {
+		} else if (address){
 			let analysis = new BMap.Geocoder();
 			analysis.getPoint(address,function(point){
 				if (point) {
@@ -27,10 +38,10 @@ function addressResolution(address,data,city) {
 					initMap(104.389301,30.850458);
 				}
 			},city)
+		} else {
+			initMap(104.389301,30.850458);
 		}
 	} else {
 		initMap(104.389301,30.850458);
 	}
 }
-
-addressResolution();
